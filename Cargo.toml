@@ -2,6 +2,10 @@
 name = "nostd_cow"
 version = "0.1.0"
 edition = "2021"
+description = "A no_std implementation of std::borrow::Cow"
+readme = "README.md"
+repository = "https://github.com/Eisverygoodletter/nostd_cow"
+license = "MIT"
 
 [dependencies]
 
