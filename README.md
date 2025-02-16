@@ -9,6 +9,16 @@ If you have `std` or `alloc` available, use [`alloc::borrow::Cow`](https://doc.r
 targeted towards embedded systems and [`alloc::borrow::Cow`](https://doc.rust-lang.org/alloc/borrow/enum.Cow.html) provides more functionality.
 `into_alloc_cow` and `from_alloc_cow` can be used to convert between the two if needed.
 
+### Overview
+`NoStdCow` is defined as 
+```rust
+pub enum NoStdCow<'a, T: Borrow<B>, B> {
+    Owned(T),
+    Borrowed(&'a B),
+}
+```
+where `&B` is the borrowed form of `T`. In most cases, `T == B` and you will want to use `NoStdCow<'a, T, T>`. It is highly recommended that `T` also has a `Clone` implementation.
+
 # Example
 ```rust
 use nostd_cow::NoStdCow;
