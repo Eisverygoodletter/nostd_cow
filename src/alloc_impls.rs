@@ -10,7 +10,7 @@ where
     /// Convert this [`NoStdCow`] into a [`alloc::borrow::Cow`].
     /// 
     /// A [`From`] implementation is also available.
-    pub fn into_std_cow(self) -> Cow<'a, B> {
+    pub fn into_alloc_cow(self) -> Cow<'a, B> {
         match self {
             Self::Borrowed(b) => Cow::Borrowed(b),
             Self::Owned(o) => Cow::Owned(o)
@@ -19,7 +19,7 @@ where
     /// Convert a [`alloc::borrow::Cow`] into a [`NoStdCow`].
     /// 
     /// A [`From`] implementation is also available.
-    pub fn from_std_cow(cow: Cow<'a, B>) -> Self {
+    pub fn from_alloc_cow(cow: Cow<'a, B>) -> Self {
         match cow {
             Cow::Borrowed(b) => Self::Borrowed(b),
             Cow::Owned(o) => Self::Owned(o),
@@ -33,7 +33,7 @@ where
     B: Clone
 {
     fn from(value: Cow<'a, B>) -> Self {
-        Self::from_std_cow(value)
+        Self::from_alloc_cow(value)
     }
 }
 impl<'a, B: ?Sized> From<NoStdCow<'a, <B as ToOwned>::Owned, B>> for Cow<'a, B>

@@ -57,8 +57,8 @@ pub type RefCow<'a, T> = NoStdCow<'a, T, T>;
 /// obtain a mutable reference to an owned value, cloning if necessary.
 /// 
 /// You should consider just using [`alloc::borrow::Cow`](https://doc.rust-lang.org/alloc/borrow/enum.Cow.html)
-/// from `alloc` if you have access to an allocator. [`NoStdCow::to_std_cow`] and
-/// [`NoStdCow::from_std_cow`]. [`From`] implementations are also available in
+/// from `alloc` if you have access to an allocator. [`NoStdCow::into_alloc_cow`] and
+/// [`NoStdCow::from_alloc_cow`]. [`From`] implementations are also available in
 /// both directions.
 /// 
 /// # Example
