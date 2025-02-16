@@ -30,6 +30,7 @@
 //! ```
 #![no_std]
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
+#![cfg_attr(not(docsrs), allow(rustdoc::broken_intra_doc_links))]
 
 
 
@@ -91,7 +92,7 @@ pub enum NoStdCow<'a, T: Borrow<B>, B: ?Sized> {
     Owned(T),
 }
 
-impl<'a, T: Borrow<B>, B: ?Sized> Deref for NoStdCow<'a, T, B> {
+impl<T: Borrow<B>, B: ?Sized> Deref for NoStdCow<'_, T, B> {
     type Target = B;
     fn deref(&self) -> &Self::Target {
         match self {
@@ -116,7 +117,7 @@ impl<T: Borrow<B>, B: ?Sized> NoStdCow<'_, T, B> {
         }
     }
 }
-impl<T: Clone + Borrow<T>> NoStdCow<'_, T, T> {
+impl<T: Clone + Borrow<T>> RefCow<'_, T> {
     /// Acquires a mutable reference to the owned form of the data.
     ///
     /// Clones the data if it is not already owned.
