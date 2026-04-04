@@ -42,6 +42,6 @@ where
     B: Clone
 {
     fn from(value: NoStdCow<'a, <B as ToOwned>::Owned, B>) -> Self {
-        value.to_std_cow()
+        value.into_alloc_cow()
     }
 }
