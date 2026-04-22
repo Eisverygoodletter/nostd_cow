@@ -1,4 +1,3 @@
-extern crate alloc;
 use crate::NoStdCow;
 use alloc::borrow::{Cow, ToOwned};
 use core::borrow::Borrow;

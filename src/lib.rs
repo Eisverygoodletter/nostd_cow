@@ -33,7 +33,7 @@
 #![cfg_attr(not(docsrs), allow(rustdoc::broken_intra_doc_links))]
 
 
-#[cfg(doc)]
+#[cfg(any(feature = "alloc", doc))]
 extern crate alloc;
 
 #[cfg(feature = "alloc")]
