@@ -1,6 +1,6 @@
 [package]
 name = "nostd_cow"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "A no_std implementation of std::borrow::Cow"
 readme = "README.md"
