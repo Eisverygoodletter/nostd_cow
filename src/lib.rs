@@ -29,7 +29,7 @@
 //! assert_eq!(to_uppercase(not_uppercase), NoStdCow::Owned(String::from("HELLOWORLD")));
 //! ```
 #![no_std]
-#![cfg_attr(docsrs, feature(doc_auto_cfg))]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 #![cfg_attr(not(docsrs), allow(rustdoc::broken_intra_doc_links))]
 
 
